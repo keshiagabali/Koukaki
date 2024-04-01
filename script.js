@@ -17,5 +17,9 @@ document.addEventListener("DOMContentLoaded", function() {
     titres.forEach(function(titre) { 
         observer.observe(titre);
     });
-    
+
+/* HERO */
+
+    /* Effet parallax */
+
 });

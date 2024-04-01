@@ -118,3 +118,31 @@ h2::after,
     top: 236em;
 }
 
+ /* HERO */
+
+.banner {
+    position: relative;
+    overflow: hidden;
+}
+  
+.banner img {
+    position: absolute;
+}
+
+@keyframes floatAnimation { /* effet de flottement du titre */
+    0% {
+      transform: translatey(0px);
+    }
+    50% {
+      transform: translatey(-20px);
+    }
+    100% {
+      transform: translatey(0px);
+    }
+}
+  
+  img[src*="image-logo.png"] {
+    animation: floatAnimation 3s ease-in-out infinite;
+}
+
+/* effet parallax a rajouter */

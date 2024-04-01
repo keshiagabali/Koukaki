@@ -5,8 +5,11 @@ get_header();
 
     <main id="primary" class="site-main">
 
-        <section class="banner">
-            <img src="<?php echo get_template_directory_uri() . '/assets/images/logo.png'; ?> " alt="logo Fleurs d'oranger & chats errants">
+        <section class="banner"><!-- ajout de la video en hero -->
+
+            <video id="banner_video" src="<?php echo get_stylesheet_directory_uri() . '/video/video_header.mp4'; ?>" autoplay loop muted></video>
+            <img src="<?php echo get_stylesheet_directory_uri() . '/images/image-logo.png'; ?> " alt="logo Fleurs d'oranger & chats errants">        
+        
         </section>
 
         <section id="#story" class="story">
@@ -95,7 +98,7 @@ get_header();
             </div>
 
         </section>
-        
+
         <section id="oscars"> <!-- ajout de la section oscars -->
 
             <?php include ('/Users/keshia/Local Sites/koukaki/app/public/wp-content/themes/foce-child/section-oscars.php'); ?>
