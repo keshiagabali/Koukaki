@@ -151,13 +151,6 @@ h2::after,
 
     /* swipper */
 
-.story #characters {
-  flex-direction: column;
-  margin-left: auto;
-  margin-right: 0;
-  width: 100%;
-}
-
 .swiper-container {
   width: 100%;
   height: auto;
@@ -169,12 +162,27 @@ h2::after,
   overflow: hidden;
 }
 
-
 .swiper-slide img {
   width: 100%;
   height: auto;
   object-fit: cover;
 }
+
+    /* personnages */
+
+.story #characters {
+  flex-direction: column;
+  margin-left: auto;
+  margin-right: 0;
+  width: 100%;
+}
+
+.story #characters div {
+    flex: none;
+    flex-shrink: 0;
+}
+  
+    /* titre */
 
 .main-character h3 {
   background-position: left;
@@ -182,7 +190,30 @@ h2::after,
   padding-left: 50px;
 }
 
-.story #characters div {
-  flex: none;
-  flex-shrink: 0;
+ /* LIEU */
+
+    /* background */
+
+.story #place {
+  background-image: url("./images/image_place.png");
+}
+
+#place {
+  position: relative;
+}
+
+.big-cloud {
+  position: absolute;
+  top: 70px;
+  right: 400px;
+  filter: blur(10px);
+  transform: translate3d(300px, 0, 0);
+}
+
+.little-cloud {
+  position: absolute;
+  top: 255px;
+  right: 800px;
+  filter: blur(10px);
+  transform: translate3d(300px, 0, 0);
 }

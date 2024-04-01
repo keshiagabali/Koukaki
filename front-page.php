@@ -62,6 +62,10 @@ get_header();
 
                     <p><?php echo get_theme_mod('place'); ?></p>
 
+                    <!-- ajout des nuages-->
+                    <img class="big-cloud" src="<?php echo get_stylesheet_directory_uri() . '/images/big_cloud.png'; ?> " alt="logo Fleurs d'oranger & chats errants">        
+                    <img class="little-cloud" src="<?php echo get_stylesheet_directory_uri() . '/images/little_cloud.png'; ?> " alt="logo Fleurs d'oranger & chats errants">        
+
                 </div>
 
             </article>

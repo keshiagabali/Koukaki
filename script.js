@@ -44,4 +44,24 @@ document.addEventListener("DOMContentLoaded", function() {
         loop: true,
         freeMode: true,
     });  
+
+/* LIEU */
+
+    /* parallax */
+
+    function parallaxTransform(element, scrollFactor) {
+        const scrollPosition = window.pageYOffset;
+        element.style.transform = `translate3d(${
+          scrollPosition * scrollFactor
+        }px, 0, 0)`;
+    }
+      
+    const bigCloud = document.querySelector('.big-cloud');
+    const littleCloud = document.querySelector('.little-cloud');
+      
+    window.addEventListener('scroll', function () {
+        parallaxTransform(bigCloud, -0.2);
+        parallaxTransform(littleCloud, -0.2);
+    });
+
 });
