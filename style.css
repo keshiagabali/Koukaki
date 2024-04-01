@@ -7,3 +7,49 @@
  Description: Thème enfant à l'ocasion de la nomination aux Oscars Shorts
  Version: 0.1
  */
+
+ /* AFFICHAGE GENERAL */
+
+    /* Effet fade in des sections */
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slide-in-top { /* keyframes banner */
+    from {
+      transform: translateY(-80px);
+    }
+    to {
+      transform: translateY(0);
+    }
+}
+
+@keyframes slide-in-bottom { /* keyframes story + studio */
+    from {
+      transform: translateY(80px);
+    }
+    to {
+      transform: translateY(0);
+    }
+}
+
+.banner {
+  animation: fade-in 2s linear normal, slide-in-top 0.5s linear normal;
+  opacity: 1;
+}
+
+.story {
+  animation: fade-in 2s linear normal, slide-in-bottom 0.5s linear normal;
+  opacity: 1;
+}
+
+#studio {
+  animation: fade-in 2s linear normal, slide-in-bottom 0.5s linear normal;
+  opacity: 1;
+}

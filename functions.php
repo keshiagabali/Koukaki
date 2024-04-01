@@ -1,8 +1,12 @@
 <?php
-add_action( 'wp_enqueue_scripts', 'theme_enqueue_styles' );
 function theme_enqueue_styles() {
+    // le style parent
     wp_enqueue_style( 'parent-style', get_template_directory_uri() . '/style.css' );
+
+    // le script
+    wp_enqueue_script( 'theme-script', get_stylesheet_directory_uri() . '/script.js', array(), '1.0.0', false );
 }
+add_action( 'wp_enqueue_scripts', 'theme_enqueue_styles' );
 
 // Get customizer options form parent theme
 if ( get_stylesheet() !== get_template() ) {
@@ -14,3 +18,7 @@ if ( get_stylesheet() !== get_template() ) {
         return get_option( 'theme_mods_' . get_template(), $default );
     } );
 }
+
+
+
+
