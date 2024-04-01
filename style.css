@@ -11,7 +11,6 @@
  /* AFFICHAGE GENERAL */
 
     /* Effet fade in des sections */
-
 @keyframes fade-in {
   from {
     opacity: 0;
@@ -40,16 +39,38 @@
 }
 
 .banner {
-  animation: fade-in 2s linear normal, slide-in-top 0.5s linear normal;
+  animation: fade-in 2s linear normal, slide-in-top 1s linear normal;
   opacity: 1;
 }
 
 .story {
-  animation: fade-in 2s linear normal, slide-in-bottom 0.5s linear normal;
+  animation: fade-in 2s linear normal, slide-in-bottom 1s linear normal;
   opacity: 1;
 }
 
 #studio {
-  animation: fade-in 2s linear normal, slide-in-bottom 0.5s linear normal;
+  animation: fade-in 2s linear normal, slide-in-bottom 1s linear normal;
   opacity: 1;
 }
+
+    /* Effet de fleurs qui tournent */
+@keyframes rotate-flower {
+  from {
+    transform: rotate(0);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.story__article::after,
+h2::after,
+#studio h2::before,
+.site-footer::after,
+.site-footer::before,
+.site-footer ul::after {
+  animation: rotate-flower 15s linear infinite;
+}
+
+
+  
