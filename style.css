@@ -68,8 +68,8 @@
 .story__article::after,
 h2::after,
 #studio h2::before,
-.site-footer::after,
-.site-footer::before,
+.section-oscars::after,
+.section-oscars::before,
 .site-footer ul::after {
   animation: rotate-flower 15s linear infinite;
 }
@@ -86,3 +86,35 @@ h2::after,
     opacity: 1;
     transform: none;
 }
+
+    /* Section oscars */
+
+.center-image {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 85px;
+}
+
+.site-footer::before { /* masquer les fleurs du footer */
+    display: none;
+}
+
+.site-footer::after { /* masquer les fleurs du footer */
+    display: none;
+}
+
+.section-oscars::before { /* ajouter les fleurs de la section oscars */
+    content: url("./images/Sunflower.png");
+    position: absolute;
+    left: 9em;
+    top: 240em;
+}
+
+.section-oscars::after { /* ajouter les fleurs de la section oscars */
+    content: url("./images/orchid.png");
+    position: absolute;
+    right: -5em;
+    top: 236em;
+}
+
