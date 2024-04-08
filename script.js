@@ -22,6 +22,8 @@ document.addEventListener("DOMContentLoaded", function() {
 
     /* Effet parallax */
 
+  
+
  /* PERSONNAGES */
 
     /* swipper */
@@ -62,6 +64,26 @@ document.addEventListener("DOMContentLoaded", function() {
     window.addEventListener('scroll', function () {
         parallaxTransform(bigCloud, -0.2);
         parallaxTransform(littleCloud, -0.2);
+    });
+
+/* MENU */
+
+    const burger = document.querySelector('.menu-button-burger');
+    const nav = document.querySelector('.menu-burger');
+
+    burger.addEventListener('click', () => {
+        burger.classList.toggle('burger-on');
+        nav.classList.toggle('nav-on');
+    });
+    
+    const menuLinks = document.querySelectorAll('.menu-burger .menu-list a');
+    
+    menuLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            // Fermeture du menu en retirant les classes qui l'affichent
+            burger.classList.remove('burger-on');
+            nav.classList.remove('nav-on');
+        });
     });
 
 });

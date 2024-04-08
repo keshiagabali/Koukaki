@@ -125,7 +125,7 @@ h2::after,
     overflow: hidden;
 }
   
-.banner img {
+.banner-img {
     position: absolute;
 }
 
@@ -146,6 +146,7 @@ h2::after,
 }
 
     /* effet parallax a rajouter */
+
 
  /* PERSONNAGES */
 
@@ -216,4 +217,257 @@ h2::after,
   right: 800px;
   filter: blur(10px);
   transform: translate3d(300px, 0, 0);
+}
+
+ /* MENU */
+
+ .main-navigation-burger,
+ .menu-burger .menu-container {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+ }
+
+ .main-navigation-burger {
+  height: 80px;
+  background-color: #FFD5A2;
+}
+
+  /* titre du site */
+
+.title-and-button {
+  display: flex;
+}
+
+.site-title a {
+  text-decoration: none;
+  font-family: "quicksand";
+  line-height: auto;
+  letter-spacing: -2%;
+  font-size: 21px;
+}
+
+  /* bouton du menu */
+
+.menu-button-burger {
+  width: 42px;
+  height: 24px;
+  cursor: pointer;
+  position: relative;
+  z-index: 100;
+  left: 400px;
+  background-color: transparent;
+  border: none;
+}
+
+.menu-button-burger span {
+  width: 100%;
+  height: 2px;
+  background-color: black;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  transition: background-color 0.5s ease-in-out;
+  display: flex;
+  right: 0px;
+}
+
+.menu-button-burger span::before {
+  transform: translateY(-10px);
+}
+
+.menu-button-burger.burger-on span::before {
+  transform: translateY(0) rotateZ(45deg);
+}
+
+.menu-button-burger span::after {
+  transform: translateY(10px);
+}
+
+.menu-button-burger.burger-on span::after {
+  transform: translateY(0) rotateZ(-45deg);
+}
+
+.menu-button-burger span::before,
+.menu-button-burger span::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  background-color: black;
+  transition: transform 0.5s ease-in-out;
+}
+
+.menu-button-burger.burger-on span {
+  background-color: transparent;
+}
+
+    /* nav */
+
+.menu-burger .menu-container {
+  flex-direction: column; 
+  position: fixed;
+  height: 1024px;
+}
+
+.menu-container {
+  left: 0;
+  right: 0;  
+  animation: fade 0.7s;
+}
+
+.menu-burger {
+  display: block;
+  opacity: 0;
+  visibility: hidden;
+  transition: visibility 0s 0.5s, opacity 0.5s linear;
+}  
+
+.nav-on {
+  display: flex;
+  justify-content: center;
+  opacity: 1;
+  visibility: visible;
+  transition: visibility 0s 0s, opacity 0.5s linear;
+}
+
+    /* liste du menu */
+
+@keyframes fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.menu-list {
+  position: fixed;
+  top: 80px;
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+  background-color: #FFF5E9;
+  height: 100%;
+  width: 100%;
+  margin: auto;
+}
+
+.menu-list li {
+  font-family: "roboto mono";
+  font-size: 64px;
+  line-height: auto;
+}
+
+@keyframes print {
+  from {
+    margin-top: -50px;
+    opacity: 0;
+  }
+  to {
+    margin-top: 0;
+    opacity: 1;
+  }
+}
+
+.menu-list .menu-list li {
+  text-align: center;
+  animation: 1s print;
+  padding-top: 20px;
+}
+
+.menu-list a {
+  text-decoration: none;
+  color: black;
+}
+
+.menu-list a:hover {
+  text-shadow: 0px 0px 14px #ff5c00;
+}
+
+.logo-burger{
+  padding-top: 25px;
+}
+.menu-container p {
+  text-transform: uppercase;
+  position: fixed;
+  top: 60em;
+}
+
+    /* img menu */
+
+.hibiscus-burger {
+  position: fixed;
+  width: 626px;
+  height: 626px;
+  top: 44em;
+  left: 81em;
+  animation: rotate-flower 15s linear infinite;
+}
+
+.yellowcat-burger {
+  position: fixed;
+  width: 105px;
+  height: 95px;
+  top: 53em;
+  left: 5em;
+  animation: floatAnimation 3s ease-in-out infinite;
+}
+
+.blackcat-burger {
+  position: fixed;
+  width: 154px;
+  height: 147px;
+  top: 37em;
+  left: 75em;
+  animation: floatAnimation 3s ease-in-out infinite;
+}
+
+.flower-burger {
+  position: fixed;
+  width: 70px;
+  height: 70px;
+  top: 37em;
+  left: 18em;
+  animation: rotate-flower 15s linear infinite;
+}
+
+.randomflower-burger {
+  position: fixed;
+  width: 62px;
+  height: 62px;
+  top: 32em;
+  left: 100em;
+  animation: rotate-flower 15s linear infinite;
+}
+
+.orchid-burger {
+  position: fixed;
+  width: 172px;
+  height: 168px;
+  top: 10em;
+  left: -4em;
+  animation: rotate-flower 15s linear infinite;
+}
+
+.bluecat-burger {
+  position: fixed;
+  width: 109px;
+  height: 98px;
+  left: 22em;
+  top: 19em;
+  animation: floatAnimation 3s ease-in-out infinite;
+}
+
+.sunflower-burger {
+  position: fixed;
+  width: 216px;
+  height: 216px;
+  right: 14em;
+  top: 13em;
+  animation: rotate-flower 15s linear infinite;
 }
