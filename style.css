@@ -129,6 +129,10 @@ h2::after,
     position: absolute;
 }
 
+.banner-hero {
+  display: none;
+}
+
 @keyframes floatAnimation { /* effet de flottement du titre */
     0% {
       transform: translatey(0px);
@@ -470,4 +474,74 @@ h2::after,
   right: 14em;
   top: 13em;
   animation: rotate-flower 15s linear infinite;
+}
+
+/* MEDIA */
+
+@media only screen and (max-width: 768px) {
+
+    .site-title {
+      display: none;
+    }
+
+    .menu-button-burger{
+      left: auto;
+    }
+
+    #banner_video {
+      display: none;
+    }
+
+    .banner-img {
+      display: none;
+    }
+
+    .banner {
+      min-height: 253px;
+    }
+
+    .titre-anime {
+      font-size: 2rem;
+    }
+
+    .swiper-slide img {
+      width: 256px;
+    }
+
+    .section-oscars::after,
+    .section-oscars::before {
+      display: none;
+    }
+
+    .site-footer ul::after {
+      animation: none;
+    }
+
+    .story #characters {
+      margin: 0em;
+    }
+
+    .center-image {
+      margin-top: 40px;
+    }
+
+    .logo-burger img {
+      width: 150px;
+    }
+
+    .menu-list {
+      gap: 50px;
+    }
+
+    .menu-list li {
+      font-size: 32px;
+    }
+
+    .menu-images {
+      display: none;
+    }
+
+    .menu-container p {
+      top: 50em;
+    }
 }

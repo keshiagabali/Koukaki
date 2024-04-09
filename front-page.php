@@ -8,7 +8,7 @@ get_header();
         <section class="banner"><!-- ajout de la video du hero -->
 
             <video id="banner_video" src="<?php echo get_stylesheet_directory_uri() . '/video/video_header.mp4'; ?>" autoplay loop muted></video>
-            <img class="banner-img" src="<?php echo get_stylesheet_directory_uri() . '/images/image-logo.png'; ?> " alt="logo Fleurs d'oranger & chats errants">        
+            <img class="banner-img" src="<?php echo get_stylesheet_directory_uri() . '/images/image-logo.png'; ?> " alt="logo Fleurs d'oranger & chats errants">  
         
         </section>
 

@@ -22,8 +22,6 @@ document.addEventListener("DOMContentLoaded", function() {
 
     /* Effet parallax */
 
-  
-
  /* PERSONNAGES */
 
     /* swipper */
@@ -51,21 +49,21 @@ document.addEventListener("DOMContentLoaded", function() {
 
     /* parallax */
 
-    function parallaxTransform(element, scrollFactor) {
+    function parallaxTransform() {
         const scrollPosition = window.pageYOffset;
-        element.style.transform = `translate3d(${
-          scrollPosition * scrollFactor
-        }px, 0, 0)`;
+        const bigCloud = document.querySelector('.big-cloud');
+        const littleCloud = document.querySelector('.little-cloud');
+        
+        if (bigCloud) {
+            bigCloud.style.transform = `translate3d(${scrollPosition * -0.2}px, 0, 0)`;
+        }
+        if (littleCloud) {
+            littleCloud.style.transform = `translate3d(${scrollPosition * -0.2}px, 0, 0)`;
+        }
     }
-      
-    const bigCloud = document.querySelector('.big-cloud');
-    const littleCloud = document.querySelector('.little-cloud');
-      
-    window.addEventListener('scroll', function () {
-        parallaxTransform(bigCloud, -0.2);
-        parallaxTransform(littleCloud, -0.2);
-    });
 
+    window.addEventListener('scroll', parallaxTransform);
+    
 /* MENU */
 
     const burger = document.querySelector('.menu-button-burger');
