@@ -126,7 +126,7 @@ h2::after,
 }
   
 .banner-img {
-    position: absolute;
+    position: fixed;
 }
 
 .banner-hero {
@@ -148,9 +148,6 @@ h2::after,
   img[src*="image-logo.png"] {
     animation: floatAnimation 3s ease-in-out infinite;
 }
-
-    /* effet parallax a rajouter */
-
 
  /* PERSONNAGES */
 
@@ -499,7 +496,8 @@ h2::after,
     }
 
     .banner-img {
-      width: 175px !important;
+      position: absolute !important;
+      top: 100px !important;
     }
 
     .banner {

@@ -18,11 +18,36 @@ document.addEventListener("DOMContentLoaded", function() {
         observer.observe(titre);
     });
 
+    /* effet d'acceleration de la rotation des fleurs */
+  
 /* HERO */
 
     /* Effet parallax */
-
- /* PERSONNAGES */
+    
+    const logo = document.querySelector('.banner-img');
+    const scrollThreshold = 320; 
+    const stopScrollThreshold = 205; 
+    
+    window.addEventListener("scroll", () => {
+        const verticale = window.scrollY;
+    
+        if (verticale < stopScrollThreshold) {
+            
+            logo.style.position = 'fixed';
+            logo.style.top = `${scrollThreshold}px`; 
+        } else {
+            
+            logo.style.position = 'fixed';
+            logo.style.top = `${scrollThreshold - (verticale - stopScrollThreshold)}px`; 
+        }
+    
+        if (verticale <= 0) {
+            logo.style.position = 'fixed';
+            logo.style.top = `${scrollThreshold}px`; 
+        }
+    });
+                    
+/* PERSONNAGES */
 
     /* swipper */
 
