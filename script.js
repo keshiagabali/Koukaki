@@ -72,23 +72,26 @@ document.addEventListener("DOMContentLoaded", function() {
 
 /* LIEU */
 
-    /* parallax */
+    /* parallax cloud */
 
-    function parallaxTransform() {
-        const scrollPosition = window.pageYOffset;
-        const bigCloud = document.querySelector('.big-cloud');
-        const littleCloud = document.querySelector('.little-cloud');
-        
-        if (bigCloud) {
-            bigCloud.style.transform = `translate3d(${scrollPosition * -0.2}px, 0, 0)`;
-        }
-        if (littleCloud) {
-            littleCloud.style.transform = `translate3d(${scrollPosition * -0.2}px, 0, 0)`;
+    function parallaxClouds() {
+        const articleplace = document.getElementById("place");
+        const verticale = window.scrollY;
+        const nuages = document.querySelectorAll(".big-cloud, .little-cloud");
+    
+        if (verticale >= articleplace.offsetTop) {
+            const vitesse = 0.3;
+            const initialPosition = 600;
+            
+            nuages.forEach(nuage => {
+                const nuages_horizontale = -verticale * vitesse + initialPosition;
+                nuage.style.transform = `translateX(${nuages_horizontale}px)`;
+            });
         }
     }
-
-    window.addEventListener('scroll', parallaxTransform);
     
+    window.addEventListener("scroll", parallaxClouds);
+                                        
 /* MENU */
 
     const burger = document.querySelector('.menu-button-burger');

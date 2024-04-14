@@ -206,10 +206,9 @@ h2::after,
 
 .big-cloud {
   position: absolute;
-  top: 70px;
+  top: 85px;
   right: 400px;
   filter: blur(10px);
-  transform: translate3d(300px, 0, 0);
 }
 
 .little-cloud {
@@ -217,7 +216,6 @@ h2::after,
   top: 255px;
   right: 800px;
   filter: blur(10px);
-  transform: translate3d(300px, 0, 0);
 }
 
  /* FOOTER */
