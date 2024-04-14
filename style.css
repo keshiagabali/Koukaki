@@ -71,7 +71,7 @@ h2::after,
 .section-oscars::after,
 .section-oscars::before,
 .site-footer ul::after {
-  animation: rotate-flower 15s linear infinite;
+  animation: rotate-flower var(--flowersspeed) linear infinite;
 }
 
     /* Effet d’animation sur les titres */
@@ -521,6 +521,11 @@ h2::after,
 
     .story #characters {
       margin: 0em;
+    }
+
+    .big-cloud, 
+    .little-cloud {
+      display: none;
     }
 
     .section-oscars::before {

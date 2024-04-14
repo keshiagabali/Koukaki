@@ -19,6 +19,21 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 
     /* effet d'acceleration de la rotation des fleurs */
+
+    const flowersSpeed = document.querySelector("body");
+    let scrollingTimeout;
+
+    window.addEventListener("scroll", () => {
+    flowersSpeed.style.setProperty("--flowersspeed", "5s");
+
+    clearTimeout(scrollingTimeout);
+
+    scrollingTimeout = setTimeout(() => {
+        flowersSpeed.style.setProperty("--flowersspeed", "15s");
+    }, 200); 
+    });
+
+    
   
 /* HERO */
 
@@ -80,8 +95,8 @@ document.addEventListener("DOMContentLoaded", function() {
         const nuages = document.querySelectorAll(".big-cloud, .little-cloud");
     
         if (verticale >= articleplace.offsetTop) {
-            const vitesse = 0.3;
-            const initialPosition = 600;
+            const vitesse = 0.2;
+            const initialPosition = 400;
             
             nuages.forEach(nuage => {
                 const nuages_horizontale = -verticale * vitesse + initialPosition;
