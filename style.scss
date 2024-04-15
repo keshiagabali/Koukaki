@@ -1,0 +1,655 @@
+/*
+ Theme Name:  Fleurs d'orangers et chats errants - Oscars Short
+ Theme URI: https://www.koukaki.local
+ Author: Studio Koukaki
+ Author URI: https://www.koukaki.local
+ Template: foce
+ Description: Thème enfant à l'ocasion de la nomination aux Oscars Shorts
+ Version: 0.1
+*/
+  
+    
+    /* AFFICHAGE GENERAL */
+  
+/* Effet fade in des sections */
+
+// Variables pour durées/easing
+$fade-duration: 2s;
+$slide-duration: 1s;
+$linear: linear;
+$normal: normal;
+
+// Mixin pour fade-in/slide-in
+@mixin apply-animation($slide-direction) {
+  animation: fade-in $fade-duration $linear $normal, $slide-direction $slide-duration $linear $normal;
+  opacity: 1;
+}
+
+// Keyframes pour fade-in
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+// Keyframes pour slide-in-top
+@keyframes slide-in-top {
+  from { transform: translateY(-80px); }
+  to { transform: translateY(0); }
+}
+
+// Keyframes pour slide-in-bottom
+@keyframes slide-in-bottom {
+  from { transform: translateY(80px); }
+  to { transform: translateY(0); }
+}
+
+// Utilisation du mixin fade-in/slide-in
+.banner {
+  @include apply-animation(slide-in-top);
+}
+
+.story, #studio {
+  @include apply-animation(slide-in-bottom);
+}
+
+/* Effet de fleurs qui tournent */
+
+// Variable pour la vitesse de rotation des fleurs
+$flower-speed: var(--flowersspeed); 
+
+// Mixin pour rotation
+@mixin rotate-animation {
+  animation: rotate-flower $flower-speed linear infinite;
+}
+
+// Keyframes pour rotate-flower
+@keyframes rotate-flower {
+  from { transform: rotate(0); }
+  to { transform: rotate(360deg); }
+}
+
+// Utilisation du mixin rotation
+.story__article::after,
+h2::after,
+.section-oscars::after, .section-oscars::before,
+.site-footer ul::after {
+  @include rotate-animation;
+}
+
+#studio h2::before {
+  @include rotate-animation;
+}
+
+/* Effet d’animation sur les titres */
+
+// Variables pour les transitions
+$transition-duration: 1s;
+$transition-easing: ease-out;
+
+// Classe de base pour .titre-anime
+.titre-anime {
+    opacity: 0;
+    transform: translate(0, 50%);
+    transition: opacity $transition-duration $transition-easing, 
+                transform $transition-duration $transition-easing;
+
+    // Classe modifiée pour .titre-anime
+    &.titre-visible { 
+        opacity: 1;
+        transform: none;
+    }
+}
+
+/* Section oscars */
+
+// Variables pour positions/marges
+$top-margin-center-image: 85px;
+$left-position-section-oscars: 9em;
+$top-position-section-oscars: 240em;
+$right-position-section-oscars: -5em;
+$top-alt-position-section-oscars: 236em;
+
+.center-image {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: $top-margin-center-image;
+}
+
+.site-footer {
+    &::before, &::after { 
+        display: none;
+    }
+}
+
+.section-oscars {
+    &::before {
+        content: url("./images/Sunflower.png");
+        position: absolute;
+        left: $left-position-section-oscars;
+        top: $top-position-section-oscars;
+    }
+
+    &::after {
+        content: url("./images/orchid.png");
+        position: absolute;
+        right: $right-position-section-oscars;
+        top: $top-alt-position-section-oscars;
+    }
+}
+
+
+    /* HERO */
+
+.banner {
+  position: relative;
+  overflow: hidden;
+
+  .banner-img {
+    position: fixed;
+  }
+
+  .banner-hero {
+    display: none;
+  }
+}
+
+/* Keyframes float animation */
+@keyframes floatAnimation {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+img[src*="image-logo.png"] {
+  animation: floatAnimation 3s ease-in-out infinite;
+}
+
+
+    /* PERSONNAGES */
+
+/* swipper */
+
+.swiper-container {
+  width: 100%;
+  height: auto;
+  overflow: hidden;
+
+  .swiper-slide {
+    width: 440px !important;
+    overflow: hidden;
+
+    img {
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+    }
+  }
+}
+
+.story {
+  #characters {
+    flex-direction: column;
+    margin-left: auto;
+    margin-right: 0;
+    width: 100%;
+
+    div {
+      flex: none;
+      flex-shrink: 0;
+    }
+  }
+
+  .main-character h3 {
+    background-position: left;
+    text-align: left;
+    padding-left: 50px;
+  }
+}
+
+
+    /* PLACE */
+
+// Variables pour positions/filtres
+$top-big-cloud: 85px;
+$right-big-cloud: 400px;
+$top-little-cloud: 255px;
+$right-little-cloud: 800px;
+$blur-filter: blur(10px);
+
+.story {
+  #place {
+    background-image: url("./images/image_place.png");
+
+    position: relative;
+
+    // Utilisation des variables
+    .big-cloud {
+      position: absolute;
+      top: $top-big-cloud;
+      right: $right-big-cloud;
+      filter: $blur-filter;
+    }
+
+    .little-cloud {
+      position: absolute;
+      top: $top-little-cloud;
+      right: $right-little-cloud;
+      filter: $blur-filter;
+    }
+  }
+}
+
+    /* FOOTER */
+
+.site-footer {
+  ul {
+    &::after {
+      bottom: -32em;
+    }
+  }
+}
+
+
+    /* MENU */
+
+// Variables pour couleurs/dimensions
+$main-nav-height: 80px;
+$burger-button-color: #FFD5A2;
+$burger-span-height: 2px;
+$burger-span-bg-color: black;
+$transition-duration: 0.5s;
+$transition-effect: ease-in-out;
+
+.main-navigation-burger,
+.menu-burger .menu-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+
+// Utilisation des variables
+.main-navigation-burger {
+  height: $main-nav-height;
+  background-color: $burger-button-color;
+}
+
+// Styles pour le titre du site et le bouton
+.title-and-button {
+  display: flex;
+
+  .site-title a {
+    text-decoration: none;
+    font-family: "quicksand";
+    line-height: auto;
+    letter-spacing: -2%;
+    font-size: 21px;
+  }
+}
+
+// Styles pour le bouton du menu burger
+.menu-button-burger {
+  width: 42px;
+  height: 24px;
+  cursor: pointer;
+  position: relative;
+  z-index: 100;
+  left: 400px;
+  background-color: transparent;
+  border: none;
+
+  span {
+    width: 100%;
+    height: $burger-span-height;
+    background-color: $burger-span-bg-color;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    transition: background-color $transition-duration $transition-effect;
+    display: flex;
+    right: 0px;
+
+    &::before,
+    &::after {
+      content: "";
+      position: absolute;
+      width: 100%;
+      height: $burger-span-height;
+      background-color: $burger-span-bg-color;
+      transition: transform $transition-duration $transition-effect;
+    }
+
+    &::before { transform: translateY(-10px); }
+    &::after { transform: translateY(10px); }
+  }
+}
+
+// Modification quand le burger est actif
+.burger-on {
+  span {
+    background-color: transparent;
+
+    &::before { transform: translateY(0) rotateZ(45deg); }
+    &::after { transform: translateY(0) rotateZ(-45deg); }
+  }
+}
+
+/* nav */
+
+// Variables transitions/dimensions
+$transition-duration: 0.5s;
+$transition-delay: 0.5s;
+$menu-height: 1024px;
+$fade-animation-duration: 0.7s;
+
+.menu-burger {
+  display: block;
+  opacity: 0;
+  visibility: hidden;
+  transition: visibility 0s $transition-delay, opacity $transition-duration linear;
+
+  .menu-container {
+    flex-direction: column;
+    position: fixed;
+    height: $menu-height;
+    left: 0;
+    right: 0;
+    animation: fade $fade-animation-duration;
+  } 
+}
+
+// Styles pour nav-on actif
+.nav-on {
+  display: flex;
+  justify-content: center;
+  opacity: 1;
+  visibility: visible;
+  transition: visibility 0s 0s, opacity $transition-duration linear;
+}
+
+/* liste du menu */
+
+// Variables pour couleurs/tailles
+$background-color-menu: #FFF5E9;
+$text-color: black;
+$hover-text-shadow: 0px 0px 14px #ff5c00;
+$animation-duration: 1s;
+
+// Keyframes pour les animations
+@keyframes fade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes print {
+  from {
+    margin-top: -50px;
+    opacity: 0;
+  }
+  to {
+    margin-top: 0;
+    opacity: 1;
+  }
+}
+
+// Styles pour la liste du menu
+.menu-list {
+  position: fixed;
+  top: 80px;
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+  background-color: $background-color-menu;
+  height: 100%;
+  width: 100%;
+  margin: auto;
+
+  li {
+    font-family: "roboto mono";
+    font-size: 64px;
+    line-height: auto;
+    text-align: center;
+    animation: $animation-duration print;
+    padding-top: 20px;
+
+    a {
+      text-decoration: none;
+      color: $text-color;
+    
+      &:hover {
+        text-shadow: $hover-text-shadow;
+      }
+    }
+  }
+}
+
+.logo-burger {
+  padding-top: 25px;
+}
+
+.menu-container {
+  p {
+    text-transform: uppercase;
+    position: fixed;
+    top: 60em;
+  }
+}
+
+/* img menu */
+
+// Variables pour les animations
+$animation-rotate: rotate-flower 15s linear infinite;
+$animation-float: floatAnimation 3s ease-in-out infinite;
+
+// Mixin pour appliquer l'animation
+@mixin apply-animation($name, $duration, $timing, $iteration) {
+  animation: $name $duration $timing $iteration;
+}
+
+// Styles communs pour les images dans le menu
+%fixed-position {
+  position: fixed;
+}
+
+.hibiscus-burger {
+  @extend %fixed-position;
+  width: 626px;
+  height: 626px;
+  top: 44em;
+  left: 81em;
+  @include apply-animation(rotate-flower, 15s, linear, infinite);
+}
+
+.yellowcat-burger,
+.blackcat-burger,
+.bluecat-burger {
+  @extend %fixed-position;
+  animation: $animation-float;
+}
+
+.yellowcat-burger {
+  width: 105px;
+  height: 95px;
+  top: 53em;
+  left: 5em;
+}
+
+.blackcat-burger {
+  width: 154px;
+  height: 147px;
+  top: 37em;
+  left: 75em;
+}
+
+.flower-burger,
+.randomflower-burger,
+.orchid-burger,
+.sunflower-burger {
+  @extend %fixed-position;
+  animation: $animation-rotate;
+}
+
+.flower-burger {
+  width: 70px;
+  height: 70px;
+  top: 37em;
+  left: 18em;
+}
+
+.randomflower-burger {
+  width: 62px;
+  height: 62px;
+  top: 32em;
+  left: 100em;
+}
+
+.orchid-burger {
+  width: 172px;
+  height: 168px;
+  top: 10em;
+  left: -4em;
+}
+
+.sunflower-burger {
+  width: 216px;
+  height: 216px;
+  right: 14em;
+  top: 13em;
+}
+
+.bluecat-burger {
+  width: 109px;
+  height: 98px;
+  left: 22em;
+  top: 19em;
+}
+
+
+    /* MEDIA */
+
+// Media query pour les écrans jusqu'à 768px
+@media only screen and (max-width: 768px) {
+
+  .site-title, 
+  #banner_video,
+  .section-oscars::after,
+  .big-cloud, 
+  .little-cloud,
+  .randomflower-burger,
+  .yellowcat-burger {
+    display: none;
+  }
+
+  .menu-button-burger {
+    left: auto;
+  }
+
+  .banner-img {
+    position: absolute !important;
+    top: 100px !important;
+  }
+
+  .banner {
+    min-height: 253px;
+  }
+
+  .titre-anime {
+    font-size: 2rem;
+  }
+
+  .swiper-slide img {
+    width: 256px !important;
+  }
+
+  .story {
+    #characters {
+      margin: 0em;
+      h3 {
+        justify-content: center;
+        display: flex;
+      }
+    }
+  }
+
+  .main-character h3 {
+    background-position: center;
+  }
+
+  .section-oscars::before {
+    left: -6em;
+    top: 215em;
+  }
+
+  .center-image {
+    margin-top: 110px;
+  }
+
+  .logo-burger img {
+    width: 150px;
+  }
+
+  .menu-list {
+    gap: 50px;
+
+    li {
+      font-size: 32px;
+
+      a {
+        &:hover {
+          text-shadow: 0px 0px 14px #ff5c00;
+        }
+      }
+    }
+  }
+
+  .menu-images img {
+    height: auto;
+    width: 60px;
+  }
+
+  .menu-container p {
+    top: 50em;
+  }
+
+  .sunflower-burger {
+    right: -2em;
+    top: 15em;
+  }
+
+  .bluecat-burger {
+    left: 0em;
+    top: 17em;
+  }
+
+  .orchid-burger {
+    top: 8em;
+    left: -3em;
+  }
+
+  .flower-burger {
+    top: 30em;
+    left: -2em;
+  }
+
+  .blackcat-burger {
+    top: 34em;
+    left: 23em;
+  }
+
+  .hibiscus-burger {
+    top: 49em;
+    left: 17em;
+    width: 20em !important;
+  }
+
+  .site-footer {
+    padding-top: 15em;
+  }
+}

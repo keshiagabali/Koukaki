@@ -1,3 +1,4 @@
+@charset "UTF-8";
 /*
  Theme Name:  Fleurs d'orangers et chats errants - Oscars Short
  Theme URI: https://www.koukaki.local
@@ -6,56 +7,44 @@
  Template: foce
  Description: Thème enfant à l'ocasion de la nomination aux Oscars Shorts
  Version: 0.1
- */
-
- /* AFFICHAGE GENERAL */
-
-    /* Effet fade in des sections */
-
+*/
+/* AFFICHAGE GENERAL */
+/* Effet fade in des sections */
 @keyframes fade-in {
   from {
-    opacity: 0; 
+    opacity: 0;
   }
   to {
     opacity: 1;
   }
 }
-
-@keyframes slide-in-top { /* keyframes banner */
-    from {
-      transform: translateY(-80px);
-    }
-    to {
-      transform: translateY(0);
-    }
+@keyframes slide-in-top {
+  from {
+    transform: translateY(-80px);
+  }
+  to {
+    transform: translateY(0);
+  }
 }
-
-@keyframes slide-in-bottom { /* keyframes story + studio */
-    from {
-      transform: translateY(80px);
-    }
-    to {
-      transform: translateY(0);
-    }
+@keyframes slide-in-bottom {
+  from {
+    transform: translateY(80px);
+  }
+  to {
+    transform: translateY(0);
+  }
 }
-
 .banner {
   animation: fade-in 2s linear normal, slide-in-top 1s linear normal;
   opacity: 1;
 }
 
-.story {
+.story, #studio {
   animation: fade-in 2s linear normal, slide-in-bottom 1s linear normal;
   opacity: 1;
 }
 
-#studio {
-  animation: fade-in 2s linear normal, slide-in-bottom 1s linear normal;
-  opacity: 1;
-}
-
-    /* Effet de fleurs qui tournent */
-
+/* Effet de fleurs qui tournent */
 @keyframes rotate-flower {
   from {
     transform: rotate(0);
@@ -64,113 +53,94 @@
     transform: rotate(360deg);
   }
 }
-
 .story__article::after,
 h2::after,
-#studio h2::before,
-.section-oscars::after,
-.section-oscars::before,
+.section-oscars::after, .section-oscars::before,
 .site-footer ul::after {
   animation: rotate-flower var(--flowersspeed) linear infinite;
 }
 
-    /* Effet d’animation sur les titres */
-
-.titre-anime { /* style initial pour les titres */
-    opacity: 0;
-    transform: translate(0, 50%);
-    transition: opacity 1s ease-out, transform 1s ease-out;
-}  
-
-.titre-visible { /* classe des titres animer */
-    opacity: 1;
-    transform: none;
+#studio h2::before {
+  animation: rotate-flower var(--flowersspeed) linear infinite;
 }
 
-    /* Section oscars */
+/* Effet d’animation sur les titres */
+.titre-anime {
+  opacity: 0;
+  transform: translate(0, 50%);
+  transition: opacity 1s ease-out, transform 1s ease-out;
+}
+.titre-anime.titre-visible {
+  opacity: 1;
+  transform: none;
+}
 
+/* Section oscars */
 .center-image {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 85px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 85px;
 }
 
-.site-footer::before { /* masquer les fleurs du footer */
-    display: none;
-}
-
-.site-footer::after { /* masquer les fleurs du footer */
-    display: none;
-}
-
-.section-oscars::before { /* ajouter les fleurs de la section oscars */
-    content: url("./images/Sunflower.png");
-    position: absolute;
-    left: 9em;
-    top: 240em;
-}
-
-.section-oscars::after { /* ajouter les fleurs de la section oscars */
-    content: url("./images/orchid.png");
-    position: absolute;
-    right: -5em;
-    top: 236em;
-}
-
- /* HERO */
-
-.banner {
-    position: relative;
-    overflow: hidden;
-}
-  
-.banner-img {
-    position: fixed;
-}
-
-.banner-hero {
+.site-footer::before, .site-footer::after {
   display: none;
 }
 
-@keyframes floatAnimation { /* effet de flottement du titre */
-    0% {
-      transform: translatey(0px);
-    }
-    50% {
-      transform: translatey(-20px);
-    }
-    100% {
-      transform: translatey(0px);
-    }
+.section-oscars::before {
+  content: url("./images/Sunflower.png");
+  position: absolute;
+  left: 9em;
+  top: 240em;
 }
-  
-  img[src*="image-logo.png"] {
-    animation: floatAnimation 3s ease-in-out infinite;
+.section-oscars::after {
+  content: url("./images/orchid.png");
+  position: absolute;
+  right: -5em;
+  top: 236em;
 }
 
- /* PERSONNAGES */
+/* HERO */
+.banner {
+  position: relative;
+  overflow: hidden;
+}
+.banner .banner-img {
+  position: fixed;
+}
+.banner .banner-hero {
+  display: none;
+}
 
-    /* swipper */
+/* Keyframes float animation */
+@keyframes floatAnimation {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+img[src*="image-logo.png"] {
+  animation: floatAnimation 3s ease-in-out infinite;
+}
 
+/* PERSONNAGES */
+/* swipper */
 .swiper-container {
   width: 100%;
   height: auto;
   overflow: hidden;
 }
-
-.swiper-slide {
+.swiper-container .swiper-slide {
   width: 440px !important;
   overflow: hidden;
 }
-
-.swiper-slide img {
+.swiper-container .swiper-slide img {
   width: 100%;
   height: auto;
   object-fit: cover;
 }
-
-    /* personnages */
 
 .story #characters {
   flex-direction: column;
@@ -178,81 +148,62 @@ h2::after,
   margin-right: 0;
   width: 100%;
 }
-
 .story #characters div {
-    flex: none;
-    flex-shrink: 0;
+  flex: none;
+  flex-shrink: 0;
 }
-  
-    /* titre */
-
-.main-character h3 {
+.story .main-character h3 {
   background-position: left;
   text-align: left;
   padding-left: 50px;
 }
 
- /* LIEU */
-
-    /* background */
-
+/* PLACE */
 .story #place {
   background-image: url("./images/image_place.png");
-}
-
-#place {
   position: relative;
 }
-
-.big-cloud {
+.story #place .big-cloud {
   position: absolute;
   top: 85px;
   right: 400px;
   filter: blur(10px);
 }
-
-.little-cloud {
+.story #place .little-cloud {
   position: absolute;
   top: 255px;
   right: 800px;
   filter: blur(10px);
 }
 
- /* FOOTER */
-
+/* FOOTER */
 .site-footer ul::after {
   bottom: -32em;
 }
 
- /* MENU */
+/* MENU */
+.main-navigation-burger,
+.menu-burger .menu-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
- .main-navigation-burger,
- .menu-burger .menu-container {
-   display: flex;
-   justify-content: center;
-   align-items: center;
- }
-
- .main-navigation-burger {
+.main-navigation-burger {
   height: 80px;
   background-color: #FFD5A2;
 }
 
-  /* titre du site */
-
 .title-and-button {
   display: flex;
 }
-
-.site-title a {
+.title-and-button .site-title a {
   text-decoration: none;
   font-family: "quicksand";
   line-height: auto;
   letter-spacing: -2%;
   font-size: 21px;
 }
-
-  /* bouton du menu */
 
 .menu-button-burger {
   width: 42px;
@@ -264,7 +215,6 @@ h2::after,
   background-color: transparent;
   border: none;
 }
-
 .menu-button-burger span {
   width: 100%;
   height: 2px;
@@ -276,25 +226,7 @@ h2::after,
   display: flex;
   right: 0px;
 }
-
-.menu-button-burger span::before {
-  transform: translateY(-10px);
-}
-
-.menu-button-burger.burger-on span::before {
-  transform: translateY(0) rotateZ(45deg);
-}
-
-.menu-button-burger span::after {
-  transform: translateY(10px);
-}
-
-.menu-button-burger.burger-on span::after {
-  transform: translateY(0) rotateZ(-45deg);
-}
-
-.menu-button-burger span::before,
-.menu-button-burger span::after {
+.menu-button-burger span::before, .menu-button-burger span::after {
   content: "";
   position: absolute;
   width: 100%;
@@ -302,31 +234,38 @@ h2::after,
   background-color: black;
   transition: transform 0.5s ease-in-out;
 }
+.menu-button-burger span::before {
+  transform: translateY(-10px);
+}
+.menu-button-burger span::after {
+  transform: translateY(10px);
+}
 
-.menu-button-burger.burger-on span {
+.burger-on span {
   background-color: transparent;
 }
-
-    /* nav */
-
-.menu-burger .menu-container {
-  flex-direction: column; 
-  position: fixed;
-  height: 1024px;
+.burger-on span::before {
+  transform: translateY(0) rotateZ(45deg);
+}
+.burger-on span::after {
+  transform: translateY(0) rotateZ(-45deg);
 }
 
-.menu-container {
-  left: 0;
-  right: 0;  
-  animation: fade 0.7s;
-}
-
+/* nav */
 .menu-burger {
   display: block;
   opacity: 0;
   visibility: hidden;
   transition: visibility 0s 0.5s, opacity 0.5s linear;
-}  
+}
+.menu-burger .menu-container {
+  flex-direction: column;
+  position: fixed;
+  height: 1024px;
+  left: 0;
+  right: 0;
+  animation: fade 0.7s;
+}
 
 .nav-on {
   display: flex;
@@ -336,8 +275,7 @@ h2::after,
   transition: visibility 0s 0s, opacity 0.5s linear;
 }
 
-    /* liste du menu */
-
+/* liste du menu */
 @keyframes fade {
   from {
     opacity: 0;
@@ -346,7 +284,16 @@ h2::after,
     opacity: 1;
   }
 }
-
+@keyframes print {
+  from {
+    margin-top: -50px;
+    opacity: 0;
+  }
+  to {
+    margin-top: 0;
+    opacity: 1;
+  }
+}
 .menu-list {
   position: fixed;
   top: 80px;
@@ -361,52 +308,43 @@ h2::after,
   width: 100%;
   margin: auto;
 }
-
 .menu-list li {
   font-family: "roboto mono";
   font-size: 64px;
   line-height: auto;
-}
-
-@keyframes print {
-  from {
-    margin-top: -50px;
-    opacity: 0;
-  }
-  to {
-    margin-top: 0;
-    opacity: 1;
-  }
-}
-
-.menu-list .menu-list li {
   text-align: center;
   animation: 1s print;
   padding-top: 20px;
 }
-
-.menu-list a {
+.menu-list li a {
   text-decoration: none;
   color: black;
 }
-
-.menu-list a:hover {
+.menu-list li a:hover {
   text-shadow: 0px 0px 14px #ff5c00;
 }
 
-.logo-burger{
+.logo-burger {
   padding-top: 25px;
 }
+
 .menu-container p {
   text-transform: uppercase;
   position: fixed;
   top: 60em;
 }
 
-    /* img menu */
+/* img menu */
+.flower-burger,
+.randomflower-burger,
+.orchid-burger,
+.sunflower-burger, .yellowcat-burger,
+.blackcat-burger,
+.bluecat-burger, .hibiscus-burger {
+  position: fixed;
+}
 
 .hibiscus-burger {
-  position: fixed;
   width: 626px;
   height: 626px;
   top: 44em;
@@ -414,194 +352,159 @@ h2::after,
   animation: rotate-flower 15s linear infinite;
 }
 
+.yellowcat-burger,
+.blackcat-burger,
+.bluecat-burger {
+  animation: floatAnimation 3s ease-in-out infinite;
+}
+
 .yellowcat-burger {
-  position: fixed;
   width: 105px;
   height: 95px;
   top: 53em;
   left: 5em;
-  animation: floatAnimation 3s ease-in-out infinite;
 }
 
 .blackcat-burger {
-  position: fixed;
   width: 154px;
   height: 147px;
   top: 37em;
   left: 75em;
-  animation: floatAnimation 3s ease-in-out infinite;
+}
+
+.flower-burger,
+.randomflower-burger,
+.orchid-burger,
+.sunflower-burger {
+  animation: rotate-flower 15s linear infinite;
 }
 
 .flower-burger {
-  position: fixed;
   width: 70px;
   height: 70px;
   top: 37em;
   left: 18em;
-  animation: rotate-flower 15s linear infinite;
 }
 
 .randomflower-burger {
-  position: fixed;
   width: 62px;
   height: 62px;
   top: 32em;
   left: 100em;
-  animation: rotate-flower 15s linear infinite;
 }
 
 .orchid-burger {
-  position: fixed;
   width: 172px;
   height: 168px;
   top: 10em;
   left: -4em;
-  animation: rotate-flower 15s linear infinite;
-}
-
-.bluecat-burger {
-  position: fixed;
-  width: 109px;
-  height: 98px;
-  left: 22em;
-  top: 19em;
-  animation: floatAnimation 3s ease-in-out infinite;
 }
 
 .sunflower-burger {
-  position: fixed;
   width: 216px;
   height: 216px;
   right: 14em;
   top: 13em;
-  animation: rotate-flower 15s linear infinite;
+}
+
+.bluecat-burger {
+  width: 109px;
+  height: 98px;
+  left: 22em;
+  top: 19em;
 }
 
 /* MEDIA */
-
 @media only screen and (max-width: 768px) {
-
-    .site-title {
-      display: none;
-    }
-
-    .menu-button-burger{
-      left: auto;
-    }
-
-    #banner_video {
-      display: none;
-    }
-
-    .banner-img {
-      position: absolute !important;
-      top: 100px !important;
-    }
-
-    .banner {
-      min-height: 253px;
-    }
-
-    .titre-anime {
-      font-size: 2rem;
-    }
-
-    .swiper-slide img {
-      width: 256px;
-    }
-
-    .story #characters h3 {
-      justify-content: center;
-      display: flex;
-    }
-
-    .main-character h3 {
-      background-position: center;
-    }
-
-    .story #characters {
-      margin: 0em;
-    }
-
-    .big-cloud, 
-    .little-cloud {
-      display: none;
-    }
-
-    .section-oscars::before {
-      left: -6em;
-      top: 215em;
-    }
-
-    .section-oscars::after {
-      display: none;
-    }
-
-    .center-image {
-      margin-top: 110px;
-    }
-
-    .logo-burger img {
-      width: 150px;
-    }
-
-    .menu-list {
-      gap: 50px;
-    }
-
-    .menu-list li {
-      font-size: 32px;
-    }
-
-    .menu-images img {
-      height: auto;
-      width: 60px;
-    }
-
-    .menu-container p {
-      top: 50em;
-    }
-
-    .sunflower-burger {
-      right: -2em;
-      top: 15em;
-    }
-
-    .bluecat-burger {
-      left: 0em;
-      top: 17em;
-    }
-
-    .orchid-burger {
-      top: 8em;
-      left: -3em;
-    }
-
-    .randomflower-burger {
-      display: none;
-    }
-
-    .flower-burger {
-      top: 30em;
-      left: -2em;
-    }
-
-    .blackcat-burger {
-      top: 34em;
-      left: 23em;
-    }
-
-    .yellowcat-burger {
-      display: none;
-    }
-
-    .hibiscus-burger {
-      top: 49em;
-      left: 17em;
-      width: 20em !important;
-    }
-
-    .site-footer {
-      padding-top: 15em;
-    }
+  .site-title,
+  #banner_video,
+  .section-oscars::after,
+  .big-cloud,
+  .little-cloud,
+  .randomflower-burger,
+  .yellowcat-burger {
+    display: none;
+  }
+  .menu-button-burger {
+    left: auto;
+  }
+  .banner-img {
+    position: absolute !important;
+    top: 100px !important;
+  }
+  .banner {
+    min-height: 253px;
+  }
+  .titre-anime {
+    font-size: 2rem;
+  }
+  .swiper-slide img {
+    width: 256px !important;
+  }
+  .story #characters {
+    margin: 0em;
+  }
+  .story #characters h3 {
+    justify-content: center;
+    display: flex;
+  }
+  .main-character h3 {
+    background-position: center;
+  }
+  .section-oscars::before {
+    left: -6em;
+    top: 215em;
+  }
+  .center-image {
+    margin-top: 110px;
+  }
+  .logo-burger img {
+    width: 150px;
+  }
+  .menu-list {
+    gap: 50px;
+  }
+  .menu-list li {
+    font-size: 32px;
+  }
+  .menu-list li a:focus {
+    text-shadow: 0px 0px 14px #ff5c00;
+  }
+  .menu-images img {
+    height: auto;
+    width: 60px;
+  }
+  .menu-container p {
+    top: 50em;
+  }
+  .sunflower-burger {
+    right: -2em;
+    top: 15em;
+  }
+  .bluecat-burger {
+    left: 0em;
+    top: 17em;
+  }
+  .orchid-burger {
+    top: 8em;
+    left: -3em;
+  }
+  .flower-burger {
+    top: 30em;
+    left: -2em;
+  }
+  .blackcat-burger {
+    top: 34em;
+    left: 23em;
+  }
+  .hibiscus-burger {
+    top: 49em;
+    left: 17em;
+    width: 20em !important;
+  }
+  .site-footer {
+    padding-top: 15em;
+  }
 }
+
+/*# sourceMappingURL=style.css.map */

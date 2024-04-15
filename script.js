@@ -33,8 +33,6 @@ document.addEventListener("DOMContentLoaded", function() {
     }, 200); 
     });
 
-    
-  
 /* HERO */
 
     /* Effet parallax */
@@ -125,6 +123,5 @@ document.addEventListener("DOMContentLoaded", function() {
             burger.classList.remove('burger-on');
             nav.classList.remove('nav-on');
         });
-    });
-
+    });  
 });
